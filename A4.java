@@ -28,6 +28,11 @@ public class A4 {
 	private int topN = 4;
 	private int totalwordcount = 0;
 	private Scanner input = new Scanner(System.in);
+	private HashMap<Integer, Avenger> hashMap = new HashMap<>();
+	private TreeMap<Integer, Avenger> alphaTMap = new TreeMap<>();
+	private TreeMap<Integer, Avenger> mentionIndexTMap = new TreeMap<>(MentionIndexComparator);
+	private TreeMap<Integer, Avenger> descendFreqTMap = new TreeMap<>(DescendingFrequencyComparator);
+	private TreeMap<Integer, Avenger> ascendFreqTMap = new TreeMap<>(AscendingFrequencyComparator);
 
 	/* TODO:
 	 * Create the necessary hashMap and treeMap objects to keep track of the Avenger objects 
@@ -49,6 +54,7 @@ public class A4 {
 		readInput();
 		createdOrderedTreeMaps();
 		printResults();
+		close();
 	}
 
 	private void createdOrderedTreeMaps() {
@@ -81,6 +87,16 @@ public class A4 {
 		 * newly created avenger to the hashMap, remember to set the frequency, and 
 		 * to keep track of the mention order
 		 */
+
+		 while (input.hasNext()) {
+			String token = input.next();
+
+			token = token.trim().toLowerCase().replaceAll("\\'s", "").replaceAll("[^a-z]", "");
+
+			if (!token.isEmpty()) {
+				
+			}
+		 }
 
 	}
 
@@ -124,5 +140,9 @@ public class A4 {
 		System.out.println("All mentioned avengers in alphabetical order:");
 		// Todo: Print the list of avengers in alphabetical order
 		System.out.println();
+	}
+
+	private void close() {
+		input.close();
 	}
 }
